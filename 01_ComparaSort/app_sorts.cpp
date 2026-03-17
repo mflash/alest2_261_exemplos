@@ -16,28 +16,29 @@ int main()
     int data[MAX];
     srand(time(NULL));
 
-    for(int i=0; i<MAX; i++)
-        data[i] = rand()%(MAX*10);
+    for (int max = 500; max <= MAX; max += 500) {
+        for (int i = 0; i < max; i++)
+            data[i] = rand() % (max * 10);
 
-    BubbleSort<int> bs;
-    //MergeSort<int> ms;
-    //QuickSort<int> qs;
+        //BubbleSort<int> s;
+        //MergeSort<int> s;
+        QuickSort<int> s;
 
-    auto start = std::chrono::high_resolution_clock::now();
-    bs.sort(data, MAX);
-    //ms.sort(data, MAX);
-    //qs.sort(data, MAX);
-    //qsort(data, MAX, sizeof(int), compare); // usar com qsort (implementação da biblioteca padrão)
+        auto start = std::chrono::high_resolution_clock::now();
+        s.sort(data, max);
+        //qsort(data, max, sizeof(int), compare); // usar com qsort (implementação da biblioteca padrão)
 
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<float> duration = end - start;
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<float> duration = end - start;
 
-    /*
-    for(int i=0; i<n; i++)
-        cout << data[i] << " ";
-    cout << endl;
-    */
+        /*
+        for(int i=0; i<n; i++)
+            cout << data[i] << " ";
+        cout << endl;
+        */
 
-    cout << MAX << " " << setprecision(7) << fixed << duration.count() << endl;
+        cout << max << " " << setprecision(7) << fixed << duration.count() << endl;
+    }
 }
+
 

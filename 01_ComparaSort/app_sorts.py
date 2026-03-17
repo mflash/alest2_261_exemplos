@@ -7,22 +7,22 @@ import random
 
 if __name__ == "__main__":
 
-    MAX = 100000
+    MAX = 50000
 
-    data = [random.randint(1,n*10) for x in range(n)]
-    #print(data)
+    for n in range(500,MAX,500):
+        data = [random.randint(1,n*10) for x in range(n)]
+        #print(data)
 
-    #bs = Bubblesort()
-    #qs = Quicksort()
-    ms = Mergesort()
+        #s = Bubblesort()
+        #s = Quicksort()
+        s = Mergesort()
 
-    start = process_time()
+        start = process_time()
 
-    #qs.sort(data)
-    ms.sort(data)
+        s.sort(data)
 
-    end = process_time()
+        end = process_time()
 
-    t = end-start
-    print(f"{n} {t}")
+        t = end-start
+        print(f"{n} {t}")
 
