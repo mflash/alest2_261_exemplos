@@ -14,8 +14,8 @@ if __name__ == "__main__":
         #print(data)
 
         #s = Bubblesort()
-        #s = Quicksort()
-        s = Mergesort()
+        s = Quicksort()
+        #s = Mergesort()
 
         start = process_time()
 

@@ -7,7 +7,7 @@
 #include "mergesort.h"
 #include "quicksort.h"
 
-#define MAX 100000
+#define MAX 1000000
 
 using namespace std;
 
@@ -16,7 +16,7 @@ int main()
     int data[MAX];
     srand(time(NULL));
 
-    for (int max = 500; max <= MAX; max += 500) {
+    for (int max = 500; max <= MAX; max += 1000) {
         for (int i = 0; i < max; i++)
             data[i] = rand() % (max * 10);
 
