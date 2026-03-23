@@ -31,10 +31,10 @@ public class MaxHeap<T extends Comparable<T>> {
     size++;
   }
 
-  private void sink(int k) {
-    while (2 * k <= size) {
+  private void sink(int k, int n) {
+    while (2 * k <= n) {
       int j = 2 * k;
-      if (j < size && v[j].compareTo(v[j + 1]) < 0)
+      if (j < n && v[j].compareTo(v[j + 1]) < 0)
         j++;
       if (v[k].compareTo(v[j])>=0)
         break;
@@ -50,7 +50,7 @@ public class MaxHeap<T extends Comparable<T>> {
       throw new UnsupportedOperationException("MaxHeap vazio!");
     T res = v[1];
     v[1] = v[--size];
-    sink(1);
+    sink(1,size);
     return res;
   }
 
@@ -89,5 +89,9 @@ public class MaxHeap<T extends Comparable<T>> {
     for (int i = 0; i < size; i++)
       System.out.print(v[i] + " ");
     System.out.println();
+  }
+
+  // Implemente heapsort!
+  void sort(T[] data) {
   }
 }

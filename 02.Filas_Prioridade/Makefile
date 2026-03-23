@@ -2,21 +2,25 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 
-# Target executable
-TARGET = appheap
+# Target executables
+APPHEAP = appheap
+APPSORTS = appsorts
 
 # Source files
-SOURCES = appheap.cpp
+SOURCES_HEAP = appheap.cpp
+SOURCES_SORT = appsorts.cpp
 
-# Build target
-all: $(TARGET)
+all: $(APPHEAP) $(APPSORTS)
 
-$(TARGET): $(SOURCES) $(INCLUDES)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCES)
+$(APPHEAP): $(SOURCES_HEAP) $(INCLUDES)
+	$(CXX) $(CXXFLAGS) -o $(APPHEAP) $(SOURCES_HEAP)
+
+$(APPSORTS): $(SOURCES_SORT) $(INCLUDES)
+	$(CXX) $(CXXFLAGS) -o $(APPSORTS) $(SOURCES_SORT)
 
 # Clean up build files
 clean:
-	rm -f $(TARGET)
+	rm -f $(APPHEAP) $(APPSORTS)
 
 # Phony targets
 .PHONY: all clean

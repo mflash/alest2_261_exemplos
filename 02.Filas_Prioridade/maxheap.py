@@ -20,8 +20,8 @@ class MaxHeap:
             self.heap[k], self.heap[k//2] = self.heap[k//2], self.heap[k]
             k = k // 2
 
-    def sink(self, k):
-      N = len(self.heap)-1
+    def sink(self, k, N):
+      #N = len(self.heap)-1
       while 2*k <= N:
         j = 2*k
         if j < N and self.heap[j]<self.heap[j+1]:
@@ -37,7 +37,7 @@ class MaxHeap:
         print("move",self.heap[len(self.heap)-1],"to top")
         self.heap[1] = self.heap[len(self.heap)-1]
         self.heap.pop()
-        self.sink(1)
+        self.sink(1, len(self.heap)-1)
         return res
 
     def printh(self, sp=32):
@@ -58,4 +58,8 @@ class MaxHeap:
 
     def getData(self): # retorna o conteúdo do heap como uma lista - exceto a posição 0
         return self.heap[1:]
+
+    # Implemente heapsort!
+    def sort(self, data):
+        pass
 

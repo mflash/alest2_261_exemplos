@@ -20,11 +20,11 @@ private:
         }
     }
 
-    void sink(int k) {
-        int size = heap.size() - 1;
-        while (2 * k <= size) {
+    void sink(int k, int n) {
+        //int size = heap.size() - 1;
+        while (2 * k <= n) {
             int j = 2 * k;
-            if (j < size && heap[j] < heap[j + 1])
+            if (j < n && heap[j] < heap[j + 1])
                 j++;
             if (heap[k] >= heap[j])
                 break;
@@ -49,7 +49,7 @@ public:
         T res = heap[1];
         heap[1] = heap.back();
         heap.pop_back();
-        sink(1);
+        sink(1,heap.size()-1);
         return res;
     }
 
@@ -80,6 +80,10 @@ public:
             elem = 2 * elem;
             sp = sp / 2;
         }
+    }
+
+    // Implemente heapsort!
+    void sort(T data[], int tam) {
     }
 };
 #endif
