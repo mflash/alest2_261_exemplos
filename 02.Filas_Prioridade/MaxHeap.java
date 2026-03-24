@@ -93,5 +93,41 @@ public class MaxHeap<T extends Comparable<T>> {
 
   // Implemente heapsort!
   void sort(T[] data) {
+    // Aponta v para data, pois queremos alterar
+    // o vetor ORIGINAL lá fora
+    v = data;
+    size = v.length;
+    int n = size-1;
+
+    // print();
+
+    // 1. Transforma o vetor de entrada em um maxheap,
+    // usando a técnica bottom-up (de baixo para cima)
+
+    for(int k=n/2; k>=1; k--) {
+      sink(k, n);
+    }
+
+    // 2. Ordena no próprio vetor, fazendo um "delMax"
+    // SEM remover o maior elemento
+
+    while(n>1) {
+      T tmp = v[1];
+      v[1] = v[n];
+      v[n] = tmp;
+      n--;
+      sink(1,n);
+    }
+
+    // print();
+  }
+
+  public static void main(String[] args) {
+    MaxHeap<Integer> mHeap = new MaxHeap<>(100);
+    Integer[] vet = { -1, 17, 8, 1, 4, 100, 45, 23, 18, 28, 30};
+    mHeap.sort(vet);
+    for(int v: vet)
+        System.out.print(v+" ");
+    System.out.println();
   }
 }

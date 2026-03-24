@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class HeapTest {
+public class AppHeap {
 
   public static void main( String[] args ) {
     MaxHeap<Integer> H = new MaxHeap<Integer>(100);
