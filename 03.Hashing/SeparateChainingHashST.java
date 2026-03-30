@@ -217,7 +217,9 @@ public class SeparateChainingHashST<Key, Value> {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
+        System.out.println("Digite palavras, uma por linha. end para terminar");
         SeparateChainingHashST<String, Integer> st = new SeparateChainingHashST<String, Integer>();
+	// Inclui cada palavra digitada no dicionário, com o valor crescente (0, 1, 2...)
         for (int i = 0;; i++) {
             String key = StdIn.readString();
             if (key.equals("end"))
