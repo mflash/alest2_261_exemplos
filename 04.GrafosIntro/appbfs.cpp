@@ -16,7 +16,7 @@ int main()
     {
       for (auto const &w : bfs.pathTo(v))
         cout << w << " ";
-      cout << endl;
+      cout << "(" << bfs.distTo(v) << ") ";
     }
     else
       cout << "SEM CAMINHO";

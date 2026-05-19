@@ -15,6 +15,7 @@ public:
 
 	bool hasPathTo(std::string v);
 	std::vector<std::string> pathTo(std::string v);
+	int distTo(std::string v);
 
 private:
 	std::string s;
