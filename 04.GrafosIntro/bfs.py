@@ -8,19 +8,26 @@ class BFS:
         self.g = g
         self.start = s
 
-        self.marked = {}
+        self.marked = set()
         self.edgeTo = {}
         self.distTo = {}
 
         self.bfs(s)
 
-    def bfs(self, v):
+    def bfs(self, s):
         fila = Queue()
-        fila.put(v)
+        fila.put(s)
+        self.marked.add(s)
+        self.distTo[s] = 0
         while fila.qsize() > 0:
-            for w in g.getAdj(v):
+            s = fila.get()
+            self.marked.add(s)
+            for w in g.getAdj(s):
                 if w not in self.marked:
-                    pass
+                    fila.put(w)
+                    self.edgeTo[w] = s
+                    self.marked.add(w)
+                    self.distTo[w] = self.distTo[s] + 1
 
     def hasPathTo(self, v):
         return v in self.marked
@@ -46,5 +53,6 @@ if __name__ == "__main__":
             for w in bfs.pathTo(v):
                 print(f"{w} ", end="")
             print()
-        print()
+        else:
+            print(" *** sem caminho ***")
     print()

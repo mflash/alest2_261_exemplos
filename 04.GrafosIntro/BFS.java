@@ -21,17 +21,29 @@ public class BFS {
 
     private void bfs(Graph g, String s) {
         LinkedList<String> fila = new LinkedList<>();
-        // System.out.println(">>> Entrando em " + s);
         marked.add(s); // "marca" como visitado
-        // Para cada vizinho w de s...
-        for (String w : g.getAdj(s)) {
-            // Se não estiver marcado...
-            if (!marked.contains(w)) {
-                // System.out.println(">>> Vou visitar " + w + " a partir de " + s);
-                // edgeTo.put(w, s); // indica que para chegar em w, viemos de s
-                // dfs(g, w);
-            } else {
-                // System.out.println("!!! Não visito " + w + " pois já está marcado");
+        fila.add(s); // e adiciona na fila
+        distTo.put(s, 0); // distância do start é zero!
+
+        // Enquanto houver vértices na fila
+        while (!fila.isEmpty()) {
+            // Retira s da fila
+            s = fila.removeFirst();
+            System.out.println("Estou em " + s);
+            // Marca s como visitado
+            marked.add(s);
+            // Para cada vizinho w de s...
+            for (String w : g.getAdj(s)) {
+                // Se não estiver marcado...
+                if (!marked.contains(w)) {
+                    System.out.println(">>> Inserindo na fila " + w + " a partir de " + s);
+                    edgeTo.put(w, s); // indica que para chegar em w, viemos de s
+                    fila.add(w);
+                    marked.add(w);
+                    distTo.put(w, distTo.get(s) + 1);
+                } else {
+                    // System.out.println("!!! Não visito " + w + " pois já está marcado");
+                }
             }
         }
         // System.out.println(">>> Saindo de " + s);
@@ -42,6 +54,12 @@ public class BFS {
         if (marked.contains(v))
             return true;
         return false;
+    }
+
+    public int distTo(String v) {
+        if (hasPathTo(v))
+            return distTo.get(v);
+        return -1; // -1 se não houver caminho
     }
 
     // Retorna o caminho de start até v
@@ -68,7 +86,7 @@ public class BFS {
                 for (String w : bfs.pathTo(v)) {
                     System.out.print(w + " ");
                 }
-                System.out.println();
+                System.out.println("- " + bfs.distTo(v));
             } else
                 System.out.println("não tem caminho...");
         }
