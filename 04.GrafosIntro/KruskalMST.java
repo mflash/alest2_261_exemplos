@@ -25,6 +25,7 @@ public class KruskalMST {
             // (usar essa aresta NÃO formará ciclo)
             // adiciona a aresta à árvore geradora
             if(!uf.find(v).equals(uf.find(w))) {
+                System.out.println(">>> Adicionando aresta "+e);
                 mst.add(e);
                 // Inclui w no conjunto de v
                 uf.union(v, w);
@@ -34,6 +35,9 @@ public class KruskalMST {
                 if(mst.size() == g.getTotalVerts()-1)
                     break;
             }
+            else {
+                System.out.println("!!! Pulando aresta "+e+" (forma ciclo!)");
+            }
        }
     }
 
@@ -41,9 +45,18 @@ public class KruskalMST {
         return mst;
     }
 
+    public double getTotalCost() {
+        double total = 0.0;
+        for(Edge e: mst)
+            total += e.getWeight();
+        return total;
+    }
+
     public static void main(String[] args) {
         EdgeWeightedGraph g = new EdgeWeightedGraph("exemplos/tinyEWG.txt");
+        // EdgeWeightedGraph g = new EdgeWeightedGraph("exemplos/mediumEWG.txt");
         KruskalMST k = new KruskalMST(g);
+        System.out.println("Custo total da árvore: "+k.getTotalCost());
         for(Edge e: k.getMST())
             System.out.println(e);
         System.out.println();
