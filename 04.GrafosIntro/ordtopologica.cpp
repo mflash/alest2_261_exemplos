@@ -6,7 +6,7 @@
 
 using namespace std;
 
-OrdTopologica::OrdTopologica(Graph &g)
+OrdTopologica::OrdTopologica(Digraph&g)
 {
 	for (auto const &v : g.getVerts()) {
     if (marked.find(v) == marked.end())
@@ -14,7 +14,7 @@ OrdTopologica::OrdTopologica(Graph &g)
   }
 }
 
-void OrdTopologica::dfs(Graph &g, string v)
+void OrdTopologica::dfs(Digraph &g, string v)
 {
 	// cout << "em " << v << endl;
 	marked.insert(v); // marca v como visitado
