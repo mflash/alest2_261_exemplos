@@ -36,4 +36,9 @@ public class EdgeWeightedDigraph extends EdgeWeightedGraph {
     sb.append("}" + NEWLINE);
     return sb.toString();
   }
+
+  public static void main(String[] args) {
+   EdgeWeightedDigraph g = new EdgeWeightedDigraph("exemplos/mediumEWG.txt");
+   System.out.println(g.toDot());
+  }
 }
